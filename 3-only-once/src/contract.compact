@@ -1,0 +1,9 @@
+import CompactStandardLibrary;
+
+export ledger counter: Counter;
+
+witness getSecretKey(): Bytes<32>;
+
+export circuit increaseCounter(n: Uint<16>) : [] {
+  counter.increment(n);
+}

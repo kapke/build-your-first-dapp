@@ -1,0 +1,10 @@
+import CompactStandardLibrary;
+
+export ledger counter: Counter;
+
+export circuit buyPermission(dust: CoinInfo): CoinInfo {
+}
+
+export circuit increaseCounter(permission: CoinInfo, n: Uint<16>) : [] {
+  counter.increment(n);
+}

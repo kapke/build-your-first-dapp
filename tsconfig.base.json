@@ -1,0 +1,25 @@
+{
+  "extends": "@tsconfig/node22/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "Preserve",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "composite": true,
+    "resolveJsonModule": true,
+    "target": "ESNext",
+    "moduleResolution": "Bundler",
+    "noPropertyAccessFromIndexSignature": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "ignoreDeprecations": "5.0",
+    "jsx": "react",
+    "lib": ["ESNext", "DOM"]
+  }
+}

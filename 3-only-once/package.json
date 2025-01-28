@@ -1,0 +1,50 @@
+{
+  "name": "3-only-once",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "compact:quick": "compactc --skip-zk ./src/contract.compact ./gen",
+    "compact": "compactc ./src/contract.compact ./gen",
+    "typecheck": "tsc -p tsconfig.test.json",
+    "test:unit": "vitest --run --dir ./test",
+    "test:integration": "DEBUG='testcontainers:containers' vitest --run --dir ./integration-test --hook-timeout=60000 --teardown-timeout=60000 --test-timeout=1200000",
+    "build": "vite build && cp -r ./gen/ ./dist/gen",
+    "serve": "http-server ./dist",
+    "dev": "vite dev --port=8080"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
+    "@types/node": "^22.10.10",
+    "@vitejs/plugin-react": "^4.3.4",
+    "http-server": "^14.1.1",
+    "testcontainers": "^10.17.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11",
+    "vitest": "^3.0.3"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "^0.7.0",
+    "@midnight-ntwrk/dapp-connector-api": "^1.2.3",
+    "@midnight-ntwrk/ledger": "^3.0.2",
+    "@midnight-ntwrk/midnight-js-contracts": "^0.2.5",
+    "@midnight-ntwrk/midnight-js-fetch-zk-config-provider": "^0.2.5",
+    "@midnight-ntwrk/midnight-js-http-client-proof-provider": "^0.2.5",
+    "@midnight-ntwrk/midnight-js-indexer-public-data-provider": "^0.2.5",
+    "@midnight-ntwrk/midnight-js-network-id": "^0.2.5",
+    "@midnight-ntwrk/midnight-js-node-zk-config-provider": "^0.2.5",
+    "@midnight-ntwrk/midnight-js-types": "^0.2.5",
+    "@midnight-ntwrk/midnight-js-utils": "^0.2.5",
+    "@midnight-ntwrk/onchain-runtime": "^0.2.2",
+    "@midnight-ntwrk/wallet": "^3.7.3",
+    "@midnight-ntwrk/wallet-api": "^3.5.0",
+    "@midnight-ntwrk/zswap": "^3.0.2",
+    "@types/react-dom": "^19.0.3",
+    "@types/semver": "^7.5.8",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "semver": "^7.6.3"
+  }
+}

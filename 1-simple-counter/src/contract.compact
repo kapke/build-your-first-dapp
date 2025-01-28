@@ -1,0 +1,13 @@
+import CompactStandardLibrary;
+// 1- everyone can increase the counter
+// think of a situation that you'd want a sealed ledger.
+export ledger counter: Counter;
+
+// what would happen if you forget the constructor? in this case nothing. because compact implicitly inits counter to 0.
+// constructor () {
+//   counter.reset_to_default();
+// }
+
+export circuit increaseCounter(n: Uint<16>) : [] {
+  counter.increment(n);
+}

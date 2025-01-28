@@ -1,0 +1,94 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    ".prettierrc.json",
+    "tsconfig.json",
+    "tsconfig.base.json"
+  ],
+  "tasks": {
+    "typecheck": {
+      "dependsOn": ["compact:quick"],
+      "outputLogs": "new-only",
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "test/**/*.ts",
+        "integration-test/**/*.ts",
+        "tsconfig.json",
+        "tsconfig.test.json"
+      ],
+      "outputs": []
+    },
+    "compact": {
+      "dependsOn": ["compact:quick"],
+      "outputLogs": "new-only",
+      "inputs": ["src/**/*.compact"],
+      "outputs": ["gen/**"]
+    },
+    "compact:quick": {
+      "outputLogs": "new-only",
+      "inputs": ["src/**/*.compact"],
+      "outputs": ["gen/contract/index.cjs", "gen/contract/index.d.ts"]
+    },
+    "build": {
+      "dependsOn": ["compact", "typecheck"],
+      "inputs": [
+        "index.html",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        ".env"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "test:integration": {
+      "dependsOn": ["^build", "compact", "typecheck"],
+      "outputLogs": "new-only",
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "integration-test/**/*.ts",
+        "vite.config.ts",
+        "tsconfig.json",
+        "tsconfig.test.json",
+        "test-compose.yml"
+      ],
+      "outputs": []
+    },
+    "test:unit": {
+      "dependsOn": ["compact:quick", "typecheck"],
+      "outputLogs": "new-only",
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "test/**/*.ts",
+        "vite.config.ts",
+        "tsconfig.json",
+        "tsconfig.test.json"
+      ],
+      "outputs": []
+    },
+    "check": {
+      "dependsOn": ["typecheck", "test:unit", "test:integration"]
+    },
+    "serve": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["build"]
+    },
+    "dev": {
+      "dependsOn": ["compact", "typecheck"],
+      "inputs": [
+        "index.html",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "tsconfig.json",
+        "tsconfig.build.json",
+        ".env"
+      ],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

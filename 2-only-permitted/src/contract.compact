@@ -1,0 +1,7 @@
+import CompactStandardLibrary;
+
+export ledger counter: Counter;
+
+export circuit increaseCounter(n: Uint<16>) : [] {
+  counter.increment(n);
+}
