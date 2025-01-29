@@ -1,15 +1,18 @@
 
 # Build your first DApp
 
+## Setup
+
+1. Setup docker and verify installation by running `docker run hello-world`
 1. Get Compact compiler and make it available on $PATH
 2. Setup node.js (preferably with nvm - https://github.com/nvm-sh/nvm)
 3. Install dependencies `npm install`
 4. Install turbo - `npm install -g turbo` for easy CLI access
-5. Verify installation - `turbo check` - `1-simple-counter` should pass, others should fail in various stages
+5. Verify installation - `turbo check` in directory `1-simple-counter` should pass, in other directories should fail in various stages
 
 ## Tasks
 
-1. Study `1-simple-counter` code for overall strucutre
+1. Study `1-simple-counter` code for overall structure
 2. Implement contract in `2-only-permitted` to allow only specific parties increase the counter
    * \* Implement functionality allowing admin user to add more parties allowed
    * \** Implement functionality allowing admin to add more admins
